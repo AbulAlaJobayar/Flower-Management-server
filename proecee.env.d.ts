@@ -4,5 +4,10 @@ declare namespace NodeJS{
         PORT:number;
         DB_URL:string;
         BCRYPT_SLAT_ROUND:number;
+        JWT_ACCESS_SECRET:string;
+        JWT_ACCESS_EXPIRES_IN:string;
+        JWT_REFRESH_SECRET:string;
+        JWT_REFRESH_EXPIRES_IN:string;
+
     }
 }

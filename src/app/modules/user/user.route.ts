@@ -5,6 +5,8 @@ import { userSchemaValidation } from "./user.validation";
 
 const router=Router()
 router.post('/register',validateRequest(userSchemaValidation.userValidation), userController.createUser)
+router.post('/login',validateRequest(userSchemaValidation.loginValidation), userController.loginUser)
+router.post('/refresh-token',validateRequest(userSchemaValidation.refreshTokenValidation), userController.refreshToken)
 
 
 export const userRouter=router
