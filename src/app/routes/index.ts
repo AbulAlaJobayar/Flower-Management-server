@@ -4,7 +4,7 @@ import { userRouter } from "../modules/user/user.route";
 const router =Router()
 const moduleRoutes=[
     {
-        path:'/product',
+        path:'/user',
         route:userRouter
     }
 ]
