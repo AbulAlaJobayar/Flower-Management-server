@@ -13,14 +13,14 @@ import { createToken, verifyToken } from "../../utils/tokenUtils";
 const createUserIntoDB = async (payload: TUser) => {
     // create user
     const result = await User.create(payload)
-    //send response without password,
-    const { password, ...otherField } = result.toObject()
+    //send response without password and parchesHistory
+    const { password,parchesHistory, ...otherField } = result.toObject()
     return otherField
 }
 const loginUser = async (payload: { email: string; password: string }) => {
     console.log(payload)
     // check user
-    const user = await User.findOne({ email: payload.email })
+    const user = await User.findOne({ email: payload.email }).select('+password')
     if (!user) {
         throw new AppError(httpStatus.NOT_FOUND, 'User is not Found')
     }

@@ -15,7 +15,12 @@ const userSchema = new Schema<TUser>({
     },
     password: {
         type: String,
-        required: [true, 'please input strong password']
+        required: [true, 'please input strong password'],
+        select:0
+    },
+    parchesHistory:{
+        type:Schema.Types.ObjectId,
+        ref:'Product'
     }
 
 }, { timestamps: true })
