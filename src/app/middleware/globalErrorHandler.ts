@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 import { ErrorRequestHandler } from "express";
 import handleDuplicateError from "../error/handleDuplicateError";
-import { TErrorSources } from "../interface/error";
+import { TErrorSources } from "../error/error";
 import AppError from "../utils/AppError";
 import { ZodError } from "zod";
 import handleZodError from "../error/handleZodError";

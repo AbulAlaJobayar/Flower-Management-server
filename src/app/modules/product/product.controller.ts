@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { productService } from "./product.service";
 
 const createProductIntoDB = catchAsync(async (req: Request, res: Response) => {
-    const result =await productService.createdProductIntoDB(req.body)
+    const result = await productService.createdProductIntoDB(req.body)
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
         success: true,
@@ -13,6 +13,28 @@ const createProductIntoDB = catchAsync(async (req: Request, res: Response) => {
         data: result,
     });
 })
+const getProductIntoDB = catchAsync(async (req: Request, res: Response) => {
+    const result = await productService.getAllProductIntoDB(req.query)
+    const { meta, data } = result
+    res.status(httpStatus.OK).json({
+        success: true,
+        meta,
+        message: 'Flower retrieved successfully!',
+        data,
+    })
+})
+const getSingleProductInDB = catchAsync(async (req, res) => {
+    const id = req.params.id
+    const result = await productService.getSingleProductIntoDB(id)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Flower retrieved successfully!',
+        data: result,
+    });
+})
 export const productController = {
-    createProductIntoDB
+    createProductIntoDB,
+    getProductIntoDB,
+    getSingleProductInDB
 }
