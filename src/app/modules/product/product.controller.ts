@@ -33,8 +33,30 @@ const getSingleProductInDB = catchAsync(async (req, res) => {
         data: result,
     });
 })
+const updateProductIntoDB = catchAsync(async (req, res) => {
+    const id = req.params.id
+    const result = await productService.updateProductIntoDB(req.user, id, req.body)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Flower Update successfully!',
+        data: result,
+    });
+})
+const deleteProductIntoDB = catchAsync(async (req, res) => {
+    const id = req.params.id
+    const result = await productService.delateProductIntoDB(req.user, id)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Flower delate successfully!',
+        data: result,
+    });
+})
 export const productController = {
     createProductIntoDB,
     getProductIntoDB,
-    getSingleProductInDB
+    getSingleProductInDB,
+    updateProductIntoDB,
+    deleteProductIntoDB
 }

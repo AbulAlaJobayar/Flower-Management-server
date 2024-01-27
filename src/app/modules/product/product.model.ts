@@ -11,6 +11,9 @@ const productSchema = new Schema<TProduct>({
     quantity: {
         type: Number, required: [true, 'please provide flower quantity!']
     },
+    bloomDate:{
+        type:Date,required:true
+    },
     color: {
         type: String, required: [true, 'please provide flower color name']
     },
@@ -26,6 +29,7 @@ const productSchema = new Schema<TProduct>({
     image: {
         type: String, required: [true, 'please provide flower image']
     },
+    
 
 }, { timestamps: true })
 export const Product = model<TProduct>('Product', productSchema);
