@@ -20,7 +20,7 @@ const getAllSalesIntoDB = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'flower Retrieved successfully',
+    message: 'Sales Retrieved successfully',
     data: result,
   });
 });
