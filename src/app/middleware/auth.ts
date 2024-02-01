@@ -13,7 +13,17 @@ const auth = () => {
     if (!token) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'invalid JWT');
     }
-    const decoded = verifyToken(token, config.jwt_access_secret);
+
+    let decoded;
+
+    try {
+       decoded = verifyToken(token, config.jwt_access_secret);
+    } catch (err) {
+      throw new AppError(httpStatus.UNAUTHORIZED, 'Unauthorized');
+    }
+
+
+    
     const { id, name, email } = decoded as JwtPayload;
     // check user
     const user = await User.findOne({ _id: id });

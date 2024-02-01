@@ -9,6 +9,9 @@ const userSchema = new Schema<TUser>(
       type: String,
       required: [true, 'please input your name'],
     },
+    image:{
+      type:String,
+    },
     email: {
       type: String,
       required: [true, 'please input your valid Email'],
@@ -19,10 +22,7 @@ const userSchema = new Schema<TUser>(
       required: [true, 'please input strong password'],
       select: 0,
     },
-    parchesHistory: {
-      type: Schema.Types.ObjectId,
-      ref: 'Product',
-    },
+   
   },
   { timestamps: true },
 );

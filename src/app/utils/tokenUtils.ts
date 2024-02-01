@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Types } from 'mongoose';
-
 type TJwtPayload = {
   id: Types.ObjectId;
   name: string;
+  image:string;
   email: string;
 };
 export const createToken = (

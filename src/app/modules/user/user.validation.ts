@@ -5,49 +5,18 @@ const userValidation = z.object({
     invalid_type_error: 'Name must be string',
     required_error: 'name must be required',
   }),
-  email: z
-    .string()
-    .email()
-    .refine((value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), {
-      message: 'invalid email address',
-    }),
+  image:z.string(),
+  email: z.string().email(),
   // eslint-disable-next-line no-useless-escape
-  password: z
-    .string()
-    .min(8, 'password should have at least 8 character')
-    .max(20, 'password should be no longer then 20 character')
-    .refine(
-      (value) =>
-        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/.test(
-          value,
-        ),
-      'password must be one digit,one uppercase,one lowercase,one special character',
-    ),
+  password: z.string()
 });
 const loginValidation = z.object({
   email: z.string().email(),
   // eslint-disable-next-line no-useless-escape
-  password: z
-    .string()
-    .min(8, 'password should have at least 8 character')
-    .max(20, 'password should be no longer then 20 character')
-    .refine(
-      (value) =>
-        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/.test(
-          value,
-        ),
-      'password must be one digit,one uppercase,one lowercase,one special character',
-    ),
+  password: z.string()
 });
-const refreshTokenValidation = z.object({
-  cookies: z.object({
-    refreshToken: z.string({
-      required_error: 'Refresh token is required',
-    }),
-  }),
-});
+
 export const userSchemaValidation = {
   userValidation,
   loginValidation,
-  refreshTokenValidation,
 };

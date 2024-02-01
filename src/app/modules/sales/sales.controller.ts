@@ -4,7 +4,9 @@ import { salesService } from './sales.service';
 import { sendResponse } from '../../utils/sendResponse';
 
 const createSalesIntoDB = catchAsync(async (req, res) => {
+  console.log(req.body)
   const result = await salesService.createSaleIntoDB(req.user, req.body);
+
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,

@@ -5,5 +5,5 @@ import auth from '../../middleware/auth';
 
 const router = Router();
 router.post('/createSale', auth(), salesController.createSalesIntoDB);
-router.get('/allSales', salesController.getAllSalesIntoDB);
+router.get('/allSales',auth(), salesController.getAllSalesIntoDB);
 export const salesRouter = router;

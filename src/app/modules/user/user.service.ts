@@ -13,7 +13,7 @@ const createUserIntoDB = async (payload: TUser) => {
   // create user
   const result = await User.create(payload);
   //send response without password and parchesHistory
-  const { password, parchesHistory, ...otherField } = result.toObject();
+  const { password, ...otherField } = result.toObject();
   return otherField;
 };
 const loginUser = async (payload: { email: string; password: string }) => {
@@ -31,6 +31,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
   const jwtPayload = {
     id: user._id,
     name: user.name,
+    image:user.image,
     email: user.email,
   };
   // create access Token
@@ -75,6 +76,7 @@ const refreshToken = async (token: string) => {
   const jwtPayload = {
     id: user._id,
     name: user.name,
+    image:user.image,
     email: user.email,
   };
 

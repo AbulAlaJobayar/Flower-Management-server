@@ -15,6 +15,9 @@ const salesSchema = new Schema<TSales>(
       type: String,
       required: true,
     },
+    totalPrice:{
+      type:Number
+    },
     date: {
       type: Date,
       default: Date.now(),

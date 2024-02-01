@@ -9,7 +9,8 @@ import { JwtPayload } from 'jsonwebtoken';
 const createSaleIntoDB = async (userData: JwtPayload, payload: TSales) => {
   const { id: tokenId, name } = userData;
   const session = await mongoose.startSession();
-
+  
+console.log(userData,payload)
   try {
     session.startTransaction();
     const { productId, purchase } = payload;
@@ -28,11 +29,12 @@ const createSaleIntoDB = async (userData: JwtPayload, payload: TSales) => {
         'Insufficient Product Quantity',
       );
     }
+    
 
     // Update product quantity
     const updatedProduct = await Product.findByIdAndUpdate(
       { _id: product._id },
-      { quantity: productQuantity - purchase },
+      { quantity: Number(productQuantity )- Number(purchase) },
       { new: true, runValidators: true },
     ).session(session);
 
@@ -44,7 +46,7 @@ const createSaleIntoDB = async (userData: JwtPayload, payload: TSales) => {
     }
     payload.buyerName = name;
     payload.userId = tokenId;
-
+payload.totalPrice=Number(product.price)*Number(purchase)
     // Create a new sale
     const sale = await Sales.create([payload], { session });
 
