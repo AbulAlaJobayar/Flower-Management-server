@@ -15,12 +15,12 @@ const createProductIntoDB = catchAsync(async (req: Request, res: Response) => {
 });
 const getProductIntoDB = catchAsync(async (req: Request, res: Response) => {
   const result = await productService.getAllProductIntoDB(req.query);
-  const { meta, data } = result;
+  const { meta, filteredData } = result;
   res.status(httpStatus.OK).json({
     success: true,
     meta,
     message: 'Flower retrieved successfully!',
-    data,
+    data:filteredData
   });
 });
 const getSingleProductInDB = catchAsync(async (req, res) => {

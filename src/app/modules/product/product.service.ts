@@ -38,9 +38,12 @@ const getAllProductIntoDB = async (payload: any) => {
     total: totalData,
     totalPage: Math.ceil(totalData / limit),
   };
+
+  const filteredData= data.filter((item)=>item.quantity !==0)
+
   return {
     meta,
-    data,
+    filteredData,
   };
 };
 const getSingleProductIntoDB = async (id: string) => {
