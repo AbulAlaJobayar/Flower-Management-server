@@ -1,5 +1,29 @@
+# Project Name:
+flower Management server
+## Project Overview
 
-## To set up and run the university services project locally, follow these steps:
+ExpressTSAuth is a sophisticated authentication system built using Express, Mongoose, TypeScript, and state-of-the-art technologies. It focuses on schema validation using Zod, secure password encryption with bcrypt, and user validation through JWT tokens. This project provides a robust foundation for implementing authentication in your applications with ease.
+
+## Live URL
+## https://flowermanagemant.vercel.app/
+
+## Features
+
+- **User Registration:** Seamlessly register new users with Zod schema validation.
+- **Secure Passwords:** Utilize bcrypt for industry-standard password encryption.
+- **JWT Authentication:** Implement JSON Web Tokens for secure user validation.
+- **Express and TypeScript:** Leverage the power of Express.js and TypeScript for a scalable backend.
+- **Product Management:**
+  - **Create Product:** Add new products with detailed information.
+  - **Get Products:** Retrieve a list of all available products.
+  - **Get Single Product:** Fetch detailed information about a specific product.
+- **Sales Management:**
+  - **Create Sale:** Record sales transactions with relevant details.
+  - **Get Sales:** Retrieve a list of all sales transactions.
+
+
+## Installation
+
   ### 1. Clone the GitHub repository:
   Use the `git clone` command to clone the project repository from GitHub to your local machine
 
