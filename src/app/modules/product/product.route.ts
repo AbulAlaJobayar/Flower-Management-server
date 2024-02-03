@@ -11,7 +11,7 @@ router.post(
   validateRequest(productSchemaValidation.productValidation),
   productController.createProductIntoDB,
 );
-router.get('/get-flower', productController.getProductIntoDB);
+router.get('/get-flower',auth(), productController.getProductIntoDB);
 router.get('/:id', auth(), productController.getSingleProductInDB);
 router.patch(
   '/:id',
